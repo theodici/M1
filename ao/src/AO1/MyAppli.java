@@ -56,8 +56,24 @@ public class MyAppli {
 							String nameProduct = sc.nextLine();
 							System.out.println("veuillez saisir la quantité de produit que vous voulez ajouter");
 							int quantity = Integer.parseInt(sc.nextLine());
-							if (!shop.addProduct(nameS,nameProduct, quantity)) {
-								System.out.println("ce produit existe déja");
+							System.out.println("quel est le type de ce produit\n 1 sanitaire \n 2 alimentaire");
+							int typeOfProduct = Integer.parseInt(sc.nextLine());
+							if (typeOfProduct == 1) {
+								if (!shop.addProduct(nameS, new HealthProduct(nameProduct, quantity))) {
+									System.out.println("ce produit existe déja");
+									break;
+								}
+							}else {
+								System.out.println("veuillez saisir la date de pr�remption du produit sous le format DD/MM/YYYY");
+								String dateIn = sc.nextLine();
+								String [] date = dateIn.split("/");
+								int day = Integer.parseInt(date[0]);
+								int month = Integer.parseInt(date[1]);
+								int year = Integer.parseInt(date[2]);
+								if (!shop.addProduct(nameS, new DietaryProduct(nameProduct, quantity,new GregorianCalendar(day,month,year)))) {
+									System.out.println("ce produit existe déja");
+									break;
+								}
 							}
 							break;
 						case 3:
@@ -105,6 +121,8 @@ public class MyAppli {
 				}
 			}catch (NoSuchElementException e){
 				System.out.println("aucun élément de ce nom n'existe");
+			}catch(NumberFormatException e) {
+				System.out.println("veuillez saisir des valeurs num�rique");
 			}
 		
 		}

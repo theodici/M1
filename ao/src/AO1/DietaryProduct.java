@@ -1,5 +1,6 @@
 package AO1;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -7,7 +8,7 @@ import java.util.GregorianCalendar;
 
 public class DietaryProduct extends Product {
 	
-	public DietaryProduct(String name, int quantity ,long expiryDate) {
+	public DietaryProduct(String name, int quantity ,GregorianCalendar expiryDate) {
 		super(name, quantity);
 		this.expiryDate = expiryDate;
 		
@@ -17,9 +18,14 @@ public class DietaryProduct extends Product {
 
 	@Override
 	public boolean canBeSell() {
-		long date = new Date();
-		if (expiryDate - date.getTime()  )
+		GregorianCalendar tmp = (GregorianCalendar) expiryDate.clone();
+		Date today = new Date();
+		tmp.add(Calendar.DATE,-3);
+		return tmp.after(today);
 	}
+
+
+	
 	
 	
 	

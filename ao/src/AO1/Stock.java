@@ -26,8 +26,8 @@ public class Stock {
 		return location;
 	}
 	
-	public boolean  addProduct(String name,int quantity) {
-			return productsArray.add(new Product(name, quantity));
+	public boolean  addProduct(Product product) {
+			return productsArray.add(product);
 	}
 
 

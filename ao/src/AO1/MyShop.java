@@ -22,8 +22,8 @@ public class MyShop {
 		return stocks.stream().filter(s -> s.getName().equals(nameStock)).findAny().get();
 	}
 
-	public boolean addProduct(String nameStock, String nameProduct, int quantity) {
-		return getStock(nameStock).addProduct(nameProduct, quantity);
+	public boolean addProduct(String nameStock, Product product) {
+		return getStock(nameStock).addProduct(product);
 	}
 
 	public boolean noProductInStock(String nameStock) {
