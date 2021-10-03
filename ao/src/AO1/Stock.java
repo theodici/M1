@@ -8,41 +8,36 @@ public class Stock {
 	private Set<Product> productsArray;
 	private String name;
 	private String location;
-	
+
 	public Stock(String name, String location) {
-		
 		this.name = name;
 		this.location = location;
-		this.productsArray = new  HashSet<>();
+		this.productsArray = new HashSet<>();
 	}
-	
-	
-	
-	
+
 	public String getName() {
 		return name;
 	}
+
 	public String getLocation() {
 		return location;
 	}
-	
-	public boolean  addProduct(Product product) {
-			return productsArray.add(product);
-	}
 
+	public boolean addProduct(Product product) {
+		return productsArray.add(product);
+	}
 
 	public void modifyProduct(String ProductModify, int quantity) {
-		Product p = productsArray.stream().filter( pr -> pr.getName().equals(ProductModify)).findAny().get();
-		int newQuantity = p.getQuantity()+quantity ;
+		Product p = productsArray.stream().filter(pr -> pr.getName().equals(ProductModify)).findAny().get();
+		int newQuantity = p.getQuantity() + quantity;
 		System.out.println(newQuantity);
-		if (newQuantity <=0) {
+		if (newQuantity <= 0) {
 			productsArray.remove(p);
-		}else {
+		} else {
 			p.setQuantity(newQuantity);
 		}
-		
-	}
 
+	}
 
 	@Override
 	public int hashCode() {
@@ -51,7 +46,6 @@ public class Stock {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -70,20 +64,14 @@ public class Stock {
 		return true;
 	}
 
-
 	public boolean noProduct() {
 		return productsArray.isEmpty();
 	}
 
-
 	public void printProduct(String product) {
-		System.out.println(productsArray.stream().filter( pr -> pr.getName().equals(product)).findAny().get().toString());
-		
+		System.out
+				.println(productsArray.stream().filter(pr -> pr.getName().equals(product)).findAny().get().toString());
+
 	}
-	
-
-
-
-	
 
 }

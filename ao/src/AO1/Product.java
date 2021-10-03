@@ -1,29 +1,28 @@
 package AO1;
 
 public abstract class Product {
-	
-	public  Product(String name, int quantity) {
+
+	public Product(String name, int quantity) {
 		this.name = name;
 		this.quantity = quantity;
 		this.reference = id++;
-		
+
 	}
+
 	private static int id = 0;
 	private String name;
 	private int quantity;
 	private int reference;
 
-
-	
-
 	public String getName() {
 		return name;
 	}
-	
+
 	public abstract boolean canBeSell();
 
 	@Override
 	public String toString() {
+
 		return "Product [name=" + name + ", quantity=" + quantity + ", reference=" + reference + "]";
 	}
 
@@ -60,10 +59,4 @@ public abstract class Product {
 		return true;
 	}
 
-
-
-
-	
-	
-	
 }
